@@ -40,4 +40,39 @@ final class SwiftFoodUITests: XCTestCase {
             }
         }
     }
+    
+    @MainActor
+        func testAddItem() throws {
+            let app = XCUIApplication()
+            app.launch()
+
+            // Example steps to test adding an item
+//            app.buttons["Add Ingredient"].tap()
+
+            // Assuming there's a text field to input item name
+//            let textField = app.textFields["ItemName"]
+            
+            let ingredientTitleField = app.textFields["Title"]
+            ingredientTitleField.tap()
+            ingredientTitleField.typeText("Flour")
+            
+            let amountField = app.textFields["Amount"]
+            amountField.tap()
+            amountField.typeText("2")
+
+            let unitField = app.textFields["Unit"]
+            unitField.tap()
+            unitField.typeText("Cups")
+
+            // Save the item
+//            app.buttons["AddButton"].tap()
+            
+            // Interact with the "Add Ingredient" button
+            let addButton = app.buttons["AddButton"]
+            XCTAssertTrue(addButton.exists, "The 'Add Ingredient' button should exist.")
+            addButton.tap()
+            
+            // Verify the new item is displayed
+            XCTAssertTrue(app.staticTexts["Flour"].exists, "The new item should be displayed in the list.")
+        }
 }

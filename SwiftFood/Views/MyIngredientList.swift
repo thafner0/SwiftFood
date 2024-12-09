@@ -26,14 +26,17 @@ struct MyIngredientList: View {
             // Text input fields
             VStack(alignment: .leading, spacing: 10) {
                 TextField("Ingredient Title", text: $title)
+                    .accessibilityIdentifier("Title")
                     .textFieldStyle(.roundedBorder)
                 
                 HStack {
                     TextField("Amount", value: $amount, formatter: NumberFormatter())
+                        .accessibilityIdentifier("Amount")
                         .textFieldStyle(.roundedBorder)
                         .keyboardType(.numberPad)
                     
                     TextField("Unit", text: $unit)
+                        .accessibilityIdentifier("Unit")
                         .textFieldStyle(.roundedBorder)
                 }
             }
@@ -43,6 +46,7 @@ struct MyIngredientList: View {
                 Button("Add Ingredient") {
                     addIngredient()
                 }
+                .accessibilityIdentifier("AddButton")
                 .buttonStyle(.bordered)
                 
                 Button("Delete All") {
