@@ -41,17 +41,16 @@ final class SwiftFoodUITests: XCTestCase {
         }
     }
     
+    // My tests
     @MainActor
         func testAddItem() throws {
             let app = XCUIApplication()
             app.launch()
-
-            // Example steps to test adding an item
-//            app.buttons["Add Ingredient"].tap()
-
-            // Assuming there's a text field to input item name
-//            let textField = app.textFields["ItemName"]
             
+            // For now, launch goes straight to my ingredient list.
+            // Might have to navigate to this screen using button presses in future.
+            
+            // Access fields using accessibility identifiers, tap -> type
             let ingredientTitleField = app.textFields["Title"]
             ingredientTitleField.tap()
             ingredientTitleField.typeText("Flour")
@@ -64,10 +63,8 @@ final class SwiftFoodUITests: XCTestCase {
             unitField.tap()
             unitField.typeText("Cups")
 
-            // Save the item
-//            app.buttons["AddButton"].tap()
-            
-            // Interact with the "Add Ingredient" button
+            // Access button w/ accessibility identifier
+            // Assert the button exists
             let addButton = app.buttons["AddButton"]
             XCTAssertTrue(addButton.exists, "The 'Add Ingredient' button should exist.")
             addButton.tap()

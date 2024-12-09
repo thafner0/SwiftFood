@@ -24,6 +24,7 @@ struct MyIngredientList: View {
                 .font(.headline)
             
             // Text input fields
+            // Uses accessibility identifiers, easy to access during testing
             VStack(alignment: .leading, spacing: 10) {
                 TextField("Ingredient Title", text: $title)
                     .accessibilityIdentifier("Title")
