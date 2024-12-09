@@ -49,6 +49,8 @@ final class SwiftFoodUITests: XCTestCase {
             
             // For now, launch goes straight to my ingredient list.
             // Might have to navigate to this screen using button presses in future.
+            let toIngredientsButton = app.buttons["ToIngredients"]
+            toIngredientsButton.tap()
             
             // Access fields using accessibility identifiers, tap -> type
             let ingredientTitleField = app.textFields["Title"]

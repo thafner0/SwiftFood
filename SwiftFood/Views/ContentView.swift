@@ -9,8 +9,24 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            MyIngredientList()
+        NavigationStack {
+            VStack {
+                Image("kitchen")
+                    .resizable()
+                    .scaledToFit() // Maintains aspect ratio
+                    .frame(width: 300) // Limits the width to 300
+
+                Text("My Little Kitchen.")
+                    .font(.largeTitle)
+                    .padding()
+                NavigationLink("View your ingredients!") {
+                    MyIngredientList()
+                }
+                .accessibilityIdentifier("ToIngredients")
+                .buttonStyle(.borderedProminent)
+                .padding(.bottom)
+            }
+            .padding()
         }
         .padding()
     }

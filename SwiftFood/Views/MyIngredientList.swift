@@ -48,7 +48,7 @@ struct MyIngredientList: View {
                     addIngredient()
                 }
                 .accessibilityIdentifier("AddButton")
-                .buttonStyle(.bordered)
+                .buttonStyle(.borderedProminent)
                 
                 Button("Delete All") {
                     deleteAllIngredients()
