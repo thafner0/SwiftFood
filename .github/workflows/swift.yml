@@ -11,13 +11,24 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+
+    runs-on: macos-12
 
     steps:
-      - name: Select Xcode version
-        run: sudo xcode-select -switch /Applications/Xcode_15.4.app/Contents/Developer
-      - uses: actions/checkout@v4
-      - name: Build
-        run: xcodebuild -scheme SwiftFood -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest' clean build
-      - name: Run Tests
-        run: xcodebuild test -scheme SwiftFood -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest'
+    - uses: actions/checkout@v3
+
+    - name: Xcode Setup
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: '14.1'
+
+    - name: Build
+      run: |
+        cd GitHubActions
+        xcodebuild build -project GitHubActions.xcodeproj -scheme GitHubActions clean build -sdk iphoneos CODE_SIGNING_ALLOWED=No
+
+    - name: Run tests
+      run: |
+        cd GitHubActions
+        xcodebuild test -project GitHubActions.xcodeproj -scheme GitHubActions clean build -sdk iphoneos -destination "platform=iOS Simulator,OS=16.1,name=iPhone 14 Pro Max" CODE_SIGNING_ALLOWED=No
+
