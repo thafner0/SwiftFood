@@ -11,12 +11,13 @@ on:
 
 jobs:
   build:
-
     runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Build
-      run: xcodebuild -scheme SwiftFood -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest' clean build
-    - name: Run Tests
-      run: xcodebuild test -scheme SwiftFood -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest'
+      - name: Select Xcode version
+        run: sudo xcode-select -switch /Applications/Xcode_15.4.app/Contents/Developer
+      - uses: actions/checkout@v4
+      - name: Build
+        run: xcodebuild -scheme SwiftFood -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest' clean build
+      - name: Run Tests
+        run: xcodebuild test -scheme SwiftFood -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest'
