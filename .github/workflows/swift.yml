@@ -26,4 +26,4 @@ jobs:
     - name: Show current version of Xcode
       run: xcodebuild -version
     - name: Run tests
-      run: xcodebuild test -scheme SwiftFood -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest'
+      run: xcodebuild test -scheme SwiftFood -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest'
