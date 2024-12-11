@@ -13,7 +13,8 @@ struct SwiftFoodApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .modelContainer(for: [MyIngredient.self]) // Attach ModelContainer
+                // attach the model container, enables the db
+                .modelContainer(for: [MyIngredient.self, Recipe.self])
         }
     }
 }

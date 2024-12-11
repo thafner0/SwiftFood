@@ -5,8 +5,6 @@
 //  Created by Matthew Caballero on 12/7/24.
 //
 
-// Test change
-
 import SwiftUI
 import SwiftData
 
@@ -59,6 +57,7 @@ struct MyIngredientList: View {
             
             List {
                 // For each ingredient in myingredient context
+                // Gets each ingredient of ingredient entity from the database
                 ForEach(myIngredients) { ingredient in
                     HStack {
                         VStack(alignment: .leading) {
@@ -79,16 +78,17 @@ struct MyIngredientList: View {
                             Image(systemName: "trash")
                                 .foregroundColor(.red)
                         }
-                        .buttonStyle(.borderless) // To avoid affecting list row interaction
+                        .buttonStyle(.borderless) 
                     }
                 }
             }
+            .cornerRadius(20)
         }
         .padding()
     }
     
     func addIngredient() {
-        guard !title.isEmpty, !unit.isEmpty else { return } // Prevent empty input
+        guard !title.isEmpty, !unit.isEmpty else { return } // No empty fields
         let ingredient = MyIngredient(
             title: title,
             amount: amount,
@@ -96,7 +96,7 @@ struct MyIngredientList: View {
         )
         context.insert(ingredient)
         
-        // Resetting input fields
+        // Reset input fields when done
         title = ""
         amount = 0
         unit = ""

@@ -25,6 +25,12 @@ struct ContentView: View {
                 .accessibilityIdentifier("ToIngredients")
                 .buttonStyle(.borderedProminent)
                 .padding(.bottom)
+                NavigationLink("View your recipes!") {
+                    RecipeList()
+                }
+                .accessibilityIdentifier("ToRecipes")
+                .buttonStyle(.borderedProminent)
+                .padding(.bottom)
             }
             .padding()
         }
