@@ -30,8 +30,9 @@ struct RecipeCreate: View {
     
     var body: some View {
         VStack {
-            Text("My Ingredients")
-                .font(.headline)
+            Text("New Recipe")
+                .font(.title2)
+                .fontWeight(.bold)
             
             // Text input fields
             // Uses accessibility identifiers, easy to access during testing
@@ -80,6 +81,7 @@ struct RecipeCreate: View {
             .accessibilityIdentifier("AddRecipeButton")
             .buttonStyle(.borderedProminent)
         }
+        .padding()
     }
 
     func addRecipe() {

@@ -13,8 +13,8 @@ struct ContentView: View {
             VStack {
                 Image("kitchen")
                     .resizable()
-                    .scaledToFit() // Maintains aspect ratio
-                    .frame(width: 300) // Limits the width to 300
+                    .scaledToFit()
+                    .frame(width: 300) 
 
                 Text("My Little Kitchen.")
                     .font(.largeTitle)

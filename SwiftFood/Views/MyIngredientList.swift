@@ -18,8 +18,9 @@ struct MyIngredientList: View {
     
     var body: some View {
         VStack {
-            Text("My Ingredients")
-                .font(.headline)
+            Text("Ingredients")
+                .font(.title2)
+                .fontWeight(.bold)
             
             // Text input fields
             // Uses accessibility identifiers, easy to access during testing

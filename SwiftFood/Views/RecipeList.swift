@@ -14,35 +14,42 @@ struct RecipeList: View {
     
     var body: some View {
         VStack {
-            Text("My Recipes")
-                .font(.headline)
+            Text("Recipes")
+                .font(.title2)
+                .fontWeight(.bold)
             
             List {
                 // For each recipe in recipes context
                 ForEach(myRecipes) { recipe in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(recipe.title)
-                                .font(.headline)
-                            // Formatting to show the decimal correctly
-                            Text("\(String(format: "%.1f", recipe.time_required)) hours")
-                            Text("\(recipe.servings_amount) servings")
-                        }
-                        Spacer()
+                    NavigationLink {
+                        RecipeDetail(recipe: recipe)
+                    } label: {
                         
-                        // Delete Button
-                        Button(action: {
-                            deleteItem(recipe)
-                        }) {
-                            Image(systemName: "trash")
-                                .foregroundColor(.red)
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(recipe.title)
+                                    .font(.headline)
+                                // Formatting to show the decimal correctly
+                                Text("\(String(format: "%.1f", recipe.time_required)) hours")
+                                Text("\(recipe.servings_amount) servings")
+                            }
+                            Spacer()
+                            
+                            // Delete Button
+                            Button(action: {
+                                deleteItem(recipe)
+                            }) {
+                                Image(systemName: "trash")
+                                    .foregroundColor(.red)
+                            }
+                            .buttonStyle(.borderless)
                         }
-                        .buttonStyle(.borderless)
                     }
                 }
+  
             }
             .cornerRadius(20)
-            NavigationLink("Create new recipe!") {
+            NavigationLink("Create new recipe") {
                 RecipeCreate()
             }
             .accessibilityIdentifier("ToRecipeCreate")
