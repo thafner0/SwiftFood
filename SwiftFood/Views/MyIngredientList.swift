@@ -17,75 +17,12 @@ struct MyIngredientList: View {
     @State private var unit: String = ""
     
     var body: some View {
-        VStack {
-            Text("Ingredients")
-                .font(.title2)
-                .fontWeight(.bold)
-            
-            // Text input fields
-            // Uses accessibility identifiers, easy to access during testing
-            VStack(alignment: .leading, spacing: 10) {
-                TextField("Ingredient Title", text: $title)
-                    .accessibilityIdentifier("Title")
-                    .textFieldStyle(.roundedBorder)
-                
-                HStack {
-                    TextField("Amount", value: $amount, formatter: NumberFormatter())
-                        .accessibilityIdentifier("Amount")
-                        .textFieldStyle(.roundedBorder)
-                        .keyboardType(.numberPad)
-                    
-                    TextField("Unit", text: $unit)
-                        .accessibilityIdentifier("Unit")
-                        .textFieldStyle(.roundedBorder)
-                }
-            }
-            
-            // Buttons, add delete
-            HStack {
-                Button("Add Ingredient") {
-                    addIngredient()
-                }
-                .accessibilityIdentifier("AddButton")
-                .buttonStyle(.borderedProminent)
-                
-                Button("Delete All") {
-                    deleteAllIngredients()
-                }
-                .buttonStyle(.bordered)
-            }
-            .padding()
-            
-            List {
-                // For each ingredient in myingredient context
-                // Gets each ingredient of ingredient entity from the database
-                ForEach(myIngredients) { ingredient in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(ingredient.title)
-                                .font(.headline)
-                            
-                            HStack {
-                                Text("\(ingredient.amount)")
-                                Text(ingredient.unit)
-                            }
-                        }
-                        Spacer()
-                        
-                        // Delete Button
-                        Button(action: {
-                            deleteItem(ingredient)
-                        }) {
-                            Image(systemName: "trash")
-                                .foregroundColor(.red)
-                        }
-                        .buttonStyle(.borderless) 
-                    }
-                }
-            }
-            .cornerRadius(20)
+        List(myIngredients) { ingredient in
+            // For each ingredient in myingredient context
+            // Gets each ingredient of ingredient entity from the database
+            IngredientRow(ingredient: ingredient)
         }
-        .padding()
+        .navigationTitle("Ingredients")
     }
     
     func addIngredient() {
@@ -115,5 +52,8 @@ struct MyIngredientList: View {
 }
 
 #Preview {
-    MyIngredientList()
+    NavigationStack {
+        MyIngredientList()
+            .modelContainer(previewContainer)
+    }
 }
