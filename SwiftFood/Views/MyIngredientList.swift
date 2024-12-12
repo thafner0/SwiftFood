@@ -115,5 +115,5 @@ struct MyIngredientList: View {
 }
 
 #Preview {
-    ContentView()
+    MyIngredientList()
 }

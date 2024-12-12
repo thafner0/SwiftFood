@@ -103,5 +103,5 @@ struct RecipeCreate: View {
 }
 
 #Preview {
-    ContentView()
+    RecipeCreate()
 }
