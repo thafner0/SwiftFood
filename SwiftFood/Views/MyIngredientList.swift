@@ -16,12 +16,18 @@ struct MyIngredientList: View {
     @State private var amount: Int = 0
     @State private var unit: String = ""
     
+    @State private var selectedIngredient: MyIngredient?
+    
     var body: some View {
-        List(myIngredients) { ingredient in
+        List(myIngredients, selection: $selectedIngredient) { ingredient in
             // For each ingredient in myingredient context
             // Gets each ingredient of ingredient entity from the database
             IngredientRow(ingredient: ingredient)
+                .tag(ingredient)
         }
+        .sheet(item: $selectedIngredient, content: { ingredient in
+            IngredientDetail(ingredient: ingredient)
+        })
         .navigationTitle("Ingredients")
     }
     
