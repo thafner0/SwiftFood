@@ -14,6 +14,7 @@ struct IngredientDetail: View {
         NavigationStack {
             Form {
                 TextField("Title", text: $ingredient.title)
+                TextField("Amount", value: $ingredient.amount, format: .number)
                 TextField("Unit", text: $ingredient.unit)
             }
                 .navigationTitle("Ingredient Detail")
