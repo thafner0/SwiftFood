@@ -49,7 +49,7 @@ struct RecipeList: View {
   
             }
             .cornerRadius(20)
-            NavigationLink("Create new recipe") {
+            NavigationLink("Create New Recipe") {
                 RecipeCreate()
             }
             .accessibilityIdentifier("ToRecipeCreate")

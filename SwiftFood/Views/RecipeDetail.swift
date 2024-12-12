@@ -23,6 +23,10 @@ struct RecipeDetail: View {
                 Text("Time required: \(String(format: "%.1f", recipe.time_required)) hours")
                 Text("Serving count: \(recipe.servings_amount) servings")
                 
+                Text("Ingredients:")
+                    .font(.title)
+                    .padding()
+                
                 Text("Instructions:")
                     .font(.title)
                     .padding()

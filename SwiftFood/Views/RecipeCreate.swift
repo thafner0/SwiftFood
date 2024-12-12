@@ -66,7 +66,7 @@ struct RecipeCreate: View {
                 ScrollView {
                     TextEditor(text: $instructions)
                         .accessibilityIdentifier("CreateRecipeInstructions")
-                        .frame(height: 150) // Fixed height
+                        .frame(height: 150) 
                         .cornerRadius(8)
                         .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray))
                 }
